@@ -1,31 +1,29 @@
-const mongoose = require('mongoose')
-const User = require('../../models/Schemas')
+const User = require('../../models/user');
+const jwt = require('jsonwebtoken');
 
-module.exports = {
-    create,
-    login
-  };
+//from the controllers, it's going to send the data back to the api
 
-  
-  async function create(req, res) {
-    try {
-      // Add the user to the db
+async function create(req, res) {
+  try {
       const user = await User.create(req.body);
       console.log(req.body)
-    } catch (err) {
-      // Probably a dup email
-      res.status(400).json(err);
-      console.log(req.body)
+      const token = createJWT(user); //we created this function that accepts a user
+      return res.json(token); //returns the token
+  } catch (error) {
+      res.status(400).json(error);
+  }
+}
 
-    }
-  }
-  
-  async function login(req, res) {
-    try {
-      // Find the user by their email address
-      const user = await User.findOne({ fullname: req.body.fullname });
-      if (!user) throw new Error();
-    } catch {
-      res.status(400).json('Bad Credentials');
-    }
-  }
+function createJWT(user) {
+  return jwt.sign( //.sign it's going to create a token
+      {user},
+      process.env.SECRET, //secret key is within .env which we will use within token 
+      {expiresIn: '24h'}
+  );
+}
+
+
+
+module.exports = {
+    create
+}

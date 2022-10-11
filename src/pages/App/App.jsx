@@ -1,20 +1,29 @@
 import './App.css';
-import React, { useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import SignUpForm from '../../components/SignUpForm/SignUpForm';
+import { useState } from 'react';
+// Import the following components
+import AuthPage from '../AuthPage/AuthPage';
+import NewOrderPage from '../NewOrderPage/NewOrderPage';
+import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
+import { Routes, Route } from 'react-router-dom';
+import NavBar from '../../components/NavBar/NavBar';
 
 function App() {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState(null); //we store all the data 
 
   return (
-    <main className="App">
-        beverly's app
-        <div>
-        <Routes>
-          <Route path="/" element={<SignUpForm />} />
-        </Routes>
-        </div>
-    </main>
+    < main className="App" >
+      {user ?
+        <>
+          <NavBar />
+          <Routes>
+            <Route path="/orders/new" element={<NewOrderPage />} />
+            <Route path="/orders" element={<OrderHistoryPage />} />
+          </Routes>
+        </>
+        :
+        <AuthPage />}
+
+    </main >
   );
 }
 

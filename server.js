@@ -26,12 +26,10 @@ app.use(express.static(path.join(__dirname, 'build')));
 // Be sure to mount before routes
 // app.use(require('./config/checkToken'));
 
-// http://localhost:3001/api/users
-// app.use('/api/users', require('./routes/api/users'));
 
 // Put API routes here, before the "catch all" route
+// http://localhost:3001/api/users
 app.use('/api/users', require('./routes/api/users'));
-
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
