@@ -27,7 +27,11 @@ export default class SignUpForm extends Component {
       // will resolve to the user object included in the 
       // payload of the JSON Web Token (JWT)
       const user = await signUp(formData); //await is waiting for a task to take place in the background
+      // grab the user and assign the prop setUser
       console.log(formData)
+      this.props.setUser(user);
+      console.log(user)
+      // if we pass a prop to a class, we could just use it without importing it. we would need to call it though by using ths.prop.setUser
       // you grab all the data (formdata) and send to the signUp form (aka users-service.js)
       // this.props.setUser(user);
     } catch {
