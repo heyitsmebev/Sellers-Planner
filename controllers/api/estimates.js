@@ -1,4 +1,4 @@
-const Product = require('../../models/product');
+const Estimate = require('../../models/estimate');
 
 module.exports = {
   create,
@@ -6,11 +6,12 @@ module.exports = {
 
 async function create(req, res) {
   try {
-    // Add the product to the db
-    const product = await Product.create(req.body);
+    // Add the estimate to the db
+    const estimate = await Estimate.create(req.body);
+    console.log(req.body)
     // token will be a string
     // Yes, we can serialize a string
-    res.json(product);
+    res.json(estimate);
   } catch (err) {
     // Probably a dup email
     res.status(400).json(err);
