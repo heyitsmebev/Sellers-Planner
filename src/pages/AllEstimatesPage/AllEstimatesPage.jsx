@@ -21,6 +21,8 @@ export default function AllLogsPage({ user }) {
 
   return (
     <main>
+    <h1>This can be the dashboard</h1>
+
       <h1 className=''>All Estimates</h1>
 
     </main>

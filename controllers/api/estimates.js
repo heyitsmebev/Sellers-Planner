@@ -2,29 +2,35 @@ const Estimate = require('../../models/estimate');
 
 module.exports = {
   index,
-  new: newEstimate,
   create,
 };
 
-function index(req, res) {
+async function index(req, res) {
   Estimate.find({}, function (err, estimates) {
     res.render("estimates", { title: "Mood Journal | Entry", estimates });
   });
 }
 
-function newEstimate(req, res) {
-  res.render("estimates", { title: "Mood Journal | Entry" });
-}
+// function newEstimate(req, res) {
+//   res.render("estimates", { title: "Mood Journal | Entry" });
+// }
 
-function create(req, res) {
-  const estimate = new Estimate(req.body);
-  estimate.user = req.user._id;
-  estimate.userName = req.user.name;
+// function create(req, res) {
+//   const estimate = new Estimate(req.body);
+//   estimate.user = req.user._id;
+//   estimate.userName = req.user.name;
+//   console.log(req.body)
+//   estimate.save(function(err) {
+//   if (err) return res.render('estimates/new', { title: 'Mood Journal | Entry'});
+//   res.redirect('/estimates');
+//   });
+// }
+
+async function create(req, res) {
+  req.body.user = req.user._id;
+  const estimate = await Estimate.create(req.body);
   console.log(req.body)
-  estimate.save(function(err) {
-  if (err) return res.render('estimates/new', { title: 'Mood Journal | Entry'});
-  res.redirect('/estimates');
-  });
+  res.json(estimate)
 }
 // async function create(req, res) {
 //   const estimate = new Estimate(req.body)

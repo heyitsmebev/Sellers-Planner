@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const estimateSchema = new Schema({
     shippingcost: { type: Number, required: true },
     packagingcost: { type: Number, required: true },
+    user: { type: Schema.Types.ObjectId, ref:"users", required: true }
 }, {
     timestamps: true,
 });

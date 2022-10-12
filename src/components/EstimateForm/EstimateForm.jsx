@@ -1,50 +1,63 @@
-import { useState } from 'react';
-import * as estimatesAPI from '../../utilities/estimates-api'
-import { useNavigate } from "react-router-dom";
+// import { useState } from 'react';
+// import * as estimatesAPI from '../../utilities/estimates-api'
+// import { useNavigate } from "react-router-dom";
+import { createEstimates } from '../../utilities/estimates-api';
 
-export default function NewEstimateForm({ setUser }) {
-  const [estimates, setEstimates] = useState({
+import { Component } from "react";
+
+export default class EstimateForm extends Component {
+  state = {
     shippingcost: '',
-    packagingcost: ''
-  });
+    packagingcost: '',
+    error: ''
+  };
 
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+  handleChange = (evt) => {
+    this.setState({
+      [evt.target.name]: evt.target.value,
+      error: ''
+    });
+  };
 
-  function handleChange(evt) {
-    setEstimates({ ...estimates, [evt.target.name]: evt.target.value });
-
-    setError('');
-  }
-
-  async function handleSubmit(evt) {
-    // Prevent form from being submitted to the server
+  handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
-      // The promise returned by the signUp service method 
-      // will resolve to the user object included in the
+      const formData = { ...this.state }; //grabbing all data from state
+      delete formData.error;
+      // The promise returned by the signUp service method
+      // will resolve to the user object included in the 
       // payload of the JSON Web Token (JWT)
-      const payload = {estimates};
-      await estimatesAPI.createEstimates(payload);
-      navigate('/estimates');
-      // setEstimates(estimate);
+      const estimate = await createEstimates(formData); //await is waiting for a task to take place in the background
+      // grab the user and assign the prop setUser
+      console.log(estimate)
+      this.props.setEstimateData(estimate);
+      // if we pass a prop to a class, we could just use it without importing it. 
+      //we would need to call it though by using ths.prop.setEstimateData
+      // you grab all the data (formdata) and send to the createEstimates within estimates-api.js
+      // this.props.setUser(user);
     } catch {
-      setError('Log In Failed - Try Again');
+      // An error happened on the server
+      this.setState({ error: 'Sign Up Failed - Try Again' });
     }
-  }
+  };
 
-  return (
-    <div>
-      <div className="form-container">
-        <form autoComplete="off" onSubmit={handleSubmit}>
-          <label>shippingcost</label>
-          <input type="text" name="shippingcost" value={estimates.shippingcost} onChange={handleChange} required />
-          <label>packagingcost</label>
-          <input type="text" name="packagingcost" value={estimates.packagingcost} onChange={handleChange} required />
-          <button type="submit">Submit</button>
-        </form>
+  // We must override the render method
+  // The render method is the equivalent to a function-based component
+  // (its job is to return the UI)
+  render() {
+    return (
+      <div>
+        <div className="form-container">
+          <form autoComplete="off" onSubmit={this.handleSubmit}>
+            <label>shippingcost</label>
+            <input type="text" name="shippingcost" value={this.state.shippingcost} onChange={this.handleChange} required />
+            <label>packagingcost</label>
+            <input type="text" name="packagingcost" value={this.state.packagingcost} onChange={this.handleChange} required />
+            <button type="submit">Save</button>
+          </form>
+        </div>
+        <p className="error-message">&nbsp;{this.state.error}</p>
       </div>
-      <p className="error-message">&nbsp;{error}</p>
-    </div>
-  );
+    );
+  }
 }
