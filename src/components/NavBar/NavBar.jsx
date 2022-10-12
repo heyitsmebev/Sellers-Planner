@@ -10,7 +10,8 @@ export default function NavBar({user, setUser}) {
 
   return (
     <nav>
-      <Link to="/estimates">Order History</Link>
+    helllooo
+      <Link to="/estimates">All Estimate dashboard Page</Link>
       &nbsp; | &nbsp;
       <Link to="/estimates/new">New Estimate</Link>
       &nbsp; | &nbsp;

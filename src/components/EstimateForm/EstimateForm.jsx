@@ -1,15 +1,19 @@
 import { useState } from 'react';
-import * as usersService from '../../utilities/users-service';
+import * as estimatesAPI from '../../utilities/estimates-api'
+import { useNavigate } from "react-router-dom";
 
 export default function NewEstimateForm({ setUser }) {
   const [estimates, setEstimates] = useState({
     shippingcost: '',
     packagingcost: ''
   });
+
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   function handleChange(evt) {
     setEstimates({ ...estimates, [evt.target.name]: evt.target.value });
+
     setError('');
   }
 
@@ -20,8 +24,10 @@ export default function NewEstimateForm({ setUser }) {
       // The promise returned by the signUp service method 
       // will resolve to the user object included in the
       // payload of the JSON Web Token (JWT)
-      const user = await usersService.login(estimates);
-      setUser(user);
+      const payload = {estimates};
+      await estimatesAPI.createEstimates(payload);
+      navigate('/estimates');
+      // setEstimates(estimate);
     } catch {
       setError('Log In Failed - Try Again');
     }
