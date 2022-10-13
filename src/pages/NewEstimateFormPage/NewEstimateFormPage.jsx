@@ -1,11 +1,11 @@
-import NewEstimateForm from '../../components/EstimateForm/EstimateForm';
+import AddEstimateForm from '../../components/AddEstimateForm/AddEstimateForm';
 
-export default function NewEstimatePage(estimatedata, setEstimateData) {
+export default function NewEstimatePage(estimateData) {
 
   return (
     <div>
       <h1>New Estimate FORM Page</h1>
-      <NewEstimateForm setEstimateData={setEstimateData}/>
+      <AddEstimateForm estimateData={estimateData}/>
     </div>
   );
 }

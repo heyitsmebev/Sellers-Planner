@@ -1,0 +1,30 @@
+.card {
+  width: 28rem;
+  background-color: black;
+}
+
+h4 {
+  text-align: center;
+}
+
+h6 {
+  text-align: center;
+  text-decoration: underline;
+  color: darkblue;
+}
+
+textarea {
+  text-indent: 1rem;
+  text-align: justify;
+  background-color: black;
+  color: whitesmoke;
+  width: 400px;
+  height: 150px; 
+  box-sizing: border-box;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#deleteBtn {
+  width: 100%;
+}

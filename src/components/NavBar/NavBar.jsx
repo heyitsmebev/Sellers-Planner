@@ -11,7 +11,7 @@ export default function NavBar({user, setUser}) {
   return (
     <nav>
     helllooo
-      <Link to="/estimates">All Estimate dashboard Page</Link>
+      <Link to="/estimates">Show All Estimate</Link>
       &nbsp; | &nbsp;
       <Link to="/estimates/new">New Estimate</Link>
       &nbsp; | &nbsp;

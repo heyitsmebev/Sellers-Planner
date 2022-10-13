@@ -1,63 +1,24 @@
-// import { useState } from 'react';
-// import * as estimatesAPI from '../../utilities/estimates-api'
-// import { useNavigate } from "react-router-dom";
-import { createEstimates } from '../../utilities/estimates-api';
+import "./EstimateForm.css"
 
-import { Component } from "react";
-
-export default class EstimateForm extends Component {
-  state = {
-    shippingcost: '',
-    packagingcost: '',
-    error: ''
-  };
-
-  handleChange = (evt) => {
-    this.setState({
-      [evt.target.name]: evt.target.value,
-      error: ''
-    });
-  };
-
-  handleSubmit = async (evt) => {
-    evt.preventDefault();
-    try {
-      const formData = { ...this.state }; //grabbing all data from state
-      delete formData.error;
-      // The promise returned by the signUp service method
-      // will resolve to the user object included in the 
-      // payload of the JSON Web Token (JWT)
-      const estimate = await createEstimates(formData); //await is waiting for a task to take place in the background
-      // grab the user and assign the prop setUser
-      console.log(estimate)
-      this.props.setEstimateData(estimate);
-      // if we pass a prop to a class, we could just use it without importing it. 
-      //we would need to call it though by using ths.prop.setEstimateData
-      // you grab all the data (formdata) and send to the createEstimates within estimates-api.js
-      // this.props.setUser(user);
-    } catch {
-      // An error happened on the server
-      this.setState({ error: 'Sign Up Failed - Try Again' });
-    }
-  };
-
-  // We must override the render method
-  // The render method is the equivalent to a function-based component
-  // (its job is to return the UI)
-  render() {
-    return (
-      <div>
-        <div className="form-container">
-          <form autoComplete="off" onSubmit={this.handleSubmit}>
-            <label>shippingcost</label>
-            <input type="text" name="shippingcost" value={this.state.shippingcost} onChange={this.handleChange} required />
-            <label>packagingcost</label>
-            <input type="text" name="packagingcost" value={this.state.packagingcost} onChange={this.handleChange} required />
-            <button type="submit">Save</button>
-          </form>
+export default function EstimateForm({estimateData, handleDeleteEstimates, user}) {
+  return (
+    <main className="accordion accordion-flush">
+      <div className="card">
+        <div className="accordion-item">
+          <h4 className="accordion-header">
+            <button className="accordion-button collapsed" id="accordionBtn" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse" aria-expanded="true" aria-controls="flush-collapseOne">{estimateData.shippingcost}
+            </button>
+          </h4>
+          <div id="flush-collapse" className="accordion-collapse collapse" aria-labelledby="flush-headingOne">
+            <div className="accordion-body">
+              <h6 className="card-title">{estimateData.destination}</h6>
+              <br />
+              <textarea className="card-text" value={estimateData.content}></textarea>
+            </div>
+          </div>
+          {estimateData.user === user._id && <button onClick={() => handleDeleteEstimates(estimateData._id)} type="button" className="btn btn-danger btn-sm" id="deleteBtn">DELETE</button>}
         </div>
-        <p className="error-message">&nbsp;{this.state.error}</p>
       </div>
-    );
-  }
+    </main>
+  )
 }
