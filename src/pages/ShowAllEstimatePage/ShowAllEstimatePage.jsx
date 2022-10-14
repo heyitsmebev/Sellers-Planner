@@ -1,14 +1,9 @@
 import { useState, useEffect } from 'react';
 import * as estimatesAPI from "../../utilities/estimates-api";
 import { Link } from 'react-router-dom';
-export default function ShowAllEstimates({ user, estimateData, setEstimateData, getOneEstimate }) {
+export default function ShowAllEstimates({ user, estimateData, getOneEstimate }) {
   
 
-  async function handleDeleteEstimates(id) {
-    await estimatesAPI.deleteEstimates(id);
-    const updatedEstimates = estimateData.filter(est => est._id !== id);
-    setEstimateData(updatedEstimates);
-  }
   
   return (
     <main>
@@ -18,7 +13,6 @@ export default function ShowAllEstimates({ user, estimateData, setEstimateData, 
           <div>
             <Link to={`/estimates/${estimate._id}`}><button onClick={() => getOneEstimate(estimate._id)}>{estimate._id}
             </button><br></br></Link>
-            <button onClick={() => handleDeleteEstimates(estimate._id)}>Delete</button>
           </div>
         )
       })}
