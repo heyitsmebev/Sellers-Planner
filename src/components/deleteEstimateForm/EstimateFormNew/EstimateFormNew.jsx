@@ -40,6 +40,8 @@
 //     </form>
 //   );
 // }
+
+import { useNavigate } from "react-router-dom";
 import { createEstimates } from '../../utilities/estimates-api';
 import { Component } from "react";
 
@@ -60,7 +62,6 @@ export default class EstimateForm extends Component {
 
   handleSubmit = async (evt) => {
     evt.preventDefault();
-
     try {
       const formData = { ...this.state }; //grabbing all data from state
       delete formData.error;
@@ -69,17 +70,14 @@ export default class EstimateForm extends Component {
       // payload of the JSON Web Token (JWT)
       const estimate = await createEstimates(formData); //await is waiting for a task to take place in the background
       // grab the user and assign the prop setUser
-
+      console.log(estimate)
       this.props.setEstimateData(estimate);
-      this.props.navigate('/contacts', {replace: true})
-
       // if we pass a prop to a class, we could just use it without importing it. 
       //we would need to call it though by using ths.prop.setEstimateData
       // you grab all the data (formdata) and send to the createEstimates within estimates-api.js
       // this.props.setUser(user);
     } catch {
       // An error happened on the server
-
       this.setState({ error: 'Sign Up Failed - Try Again' });
     }
   };
@@ -90,7 +88,6 @@ export default class EstimateForm extends Component {
   render() {
     return (
       <div>
-        <h1>this component can be the form page</h1>
         <div className="form-container">
           <form autoComplete="off" onSubmit={this.handleSubmit}>
             <label>shippingcost</label>
@@ -98,7 +95,7 @@ export default class EstimateForm extends Component {
             <label>packagingcost</label>
             <input type="text" name="packagingcost" value={this.state.packagingcost} onChange={this.handleChange} required />
             <label for="category">Choose a category:</label>
-              <select id="category" name="category" value={this.state.category} onChange={this.handleChange} required >
+              <select id="category" name="category" value={this.state.category} onChange={this.handleChange}>
                 <option value="kitchen">kitchen</option>
                 <option value="books">books</option>
                 <option value="home and garden">home & garden</option>

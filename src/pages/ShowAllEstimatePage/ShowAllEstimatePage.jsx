@@ -1,9 +1,12 @@
-import { useState, useEffect } from 'react';
 import * as estimatesAPI from "../../utilities/estimates-api";
 import { Link } from 'react-router-dom';
-export default function ShowAllEstimates({ user, estimateData, getOneEstimate }) {
-  
+import Footer from "../../components/Footer";
+export default function ShowAllEstimates({ user, estimateData }) {
 
+  //function to get one estimate by id and pass to pages/components
+  async function getOneEstimate(id) {
+    await estimatesAPI.getEstimatesById(id) 
+  } 
   
   return (
     <main>
@@ -16,7 +19,7 @@ export default function ShowAllEstimates({ user, estimateData, getOneEstimate })
           </div>
         )
       })}
-
+      <Footer/>
     </main>
   );
 }

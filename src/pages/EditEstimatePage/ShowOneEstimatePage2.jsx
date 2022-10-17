@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import * as estimateAPI from "../../utilities/estimates-api";
-import { Link, useParams, useNavigate } from 'react-router-dom';
-import { useForm } from "react-hook-form";
+import {useParams, useNavigate } from 'react-router-dom';
 
 
 export default function ShowOneEstimate({ user, estimateData, handleDeleteEstimates, getOneEstimate, oneEstimate, setEstimateData }) {

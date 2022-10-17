@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import {useParams, useNavigate } from 'react-router-dom';
 
 import * as estimateAPI from '../../utilities/estimates-api';
 
@@ -9,7 +9,7 @@ const initialFormData = {
     category: 'books'
   };
 
-export default function AddEditForm({user, estimateData, handleDeleteEstimates, getOneEstimate, oneEstimate, setOneEstimate, setEstimateData}) {
+export default function AddEditForm({estimateData, setEstimateData}) {
     const navigate = useNavigate();
     const [formData, setFormData] = useState(initialFormData);
     
@@ -74,7 +74,6 @@ export default function AddEditForm({user, estimateData, handleDeleteEstimates, 
                 <h1>{estimate._id}</h1>
                 <h1>{estimate.shippingcost}</h1>
                 <h1>{estimate.category}</h1>
-          
                 <button onClick={() => handleDeleteEstimates(estimate._id)}>Delete</button>
               </div>
             )

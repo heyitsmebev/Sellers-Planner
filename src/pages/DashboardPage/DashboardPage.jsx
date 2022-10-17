@@ -1,18 +1,34 @@
-import { useState } from 'react';
-import SignUpForm from '../../components/SignUpForm/SignUpForm';
-import LoginForm from '../../components/LoginForm/LoginForm';
+import "./DashboardPage.css"
 
-export default function DashboardPage({setUser}) {
-    const [showSignUp, setShowSignUp] = useState(false);
+import { useState } from 'react';
+
+// Import following pages
+import AuthPage from '../App/AuthPage';
+
+export default function DashboardPage({user, estimateData, setUser}) {
+
     return (
-        <main>
-            <h1>Dashboard</h1>
-            <button onClick={() => setShowSignUp(!showSignUp)}>{showSignUp ? 'Log In' : 'Sign Up'}</button>
-            {showSignUp ?
-                <SignUpForm setUser={setUser}/>
-                :
-                <LoginForm setUser={setUser}/>
-            }
-        </main>
+        <div>
+        
+        {user ?
+            <>
+            <h1 >Dashboard</h1>
+            <h1 className="text-3xl font-bold underline">hi {user.name}</h1>
+            </>
+            :
+            <AuthPage setUser={setUser}/>}
+        </div>
     );
 }
+
+// {estimateData.map(estimate => {
+//     if (user && (user._id === estimate.user)) {
+//         return (
+//             <div>
+//               <h1>{estimate._id}</h1>
+//               <h1>{estimate.shippingcost}</h1>
+//               <h1>{estimate.category}</h1>
+//             </div>
+//           )
+//     }
+//   })}
