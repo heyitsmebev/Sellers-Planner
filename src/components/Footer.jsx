@@ -11,7 +11,7 @@ export default function Footer() {
                 <div class="col-span-full lg:col-span-2">
   
           
-                  <p class="text-gray-400 sm:pr-8 mb-6">Filler text is dummy text which has no meaning however looks very similar to real text.</p>
+                  <p class="text-gray-400 sm:pr-8 mb-6">This application helps to estimate the profitablity of a product to help you make better decision for your business.</p>
           
 
                 </div>

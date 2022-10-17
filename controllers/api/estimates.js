@@ -36,24 +36,4 @@ async function deleteOne(req, res) {
   await Estimate.findOneAndDelete({_id: req.params.id, user: req.user._id});
   res.json('Deleted!');
 }
-// async function create(req, res) {
-//   const estimate = new Estimate(req.body)
-//   req.body.user = req.user._id;
-//   console.log('console log : req.body' + req.body)
-//   estimate.save(function(err) {
-//     if (err) return res.render('estimates/new', { title: 'Mood Journal | Entry'});
-//     res.redirect('/estimates');
-//     });
-//   // try {
-//   //   // Add the estimate to the db
-
-//   //   // const estimate = await Estimate.create(req.body);
-//   //   // token will be a string
-//   //   // Yes, we can serialize a string
-//   //   // res.json(estimate);
-//   // } catch (err) {
-//   //   // Probably a dup email
-//   //   res.status(400).json(err);
-//   // }
-// }
 
