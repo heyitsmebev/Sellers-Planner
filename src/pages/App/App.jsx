@@ -19,6 +19,7 @@ import LoginForm from '../../components/LoginForm';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Hero from '../../components/Hero';
+
 function App() {
   // set the user by calling getUser function
   const [user, setUser] = useState(getUser()); //we store all the data //we should see this state change when user data is signed up. in app state
@@ -50,9 +51,7 @@ function App() {
         </>
         :
         <div>
-        <Header />
         <Hero setUser={setUser}/>
-        <HomePage /> 
         <Footer />
         </div>}
     </main >

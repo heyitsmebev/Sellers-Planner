@@ -83,12 +83,12 @@ export default function AddEditForm({estimateData, setEstimateData}) {
                   <option value="office products">office products</option>
                 </select>
               <label class="inline-block text-gray-800 text-sm sm:text-base mb-2">Net Profit</label>
-              <input type="text" name="netprofit" placeholder={estimate.netprofit} value={formData.netprofit} onChange={handleChange} required class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+              <input type="text" name="netprofit" placeholder={estimate.netprofit} value={formData.netprofit} onChange={handleChange} required class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2 " />
               <label class="inline-block text-gray-800 text-sm sm:text-base mb-2"></label>
               <button onClick={updateChange} class="inline-block bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3" >Update</button>
 
               </form>
-              <button onClick={() => handleDeleteEstimates(estimate._id)} class="inline-block bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3" >Delete</button>
+              <button onClick={() => handleDeleteEstimates(estimate._id)} class="inline-block bg-red-500 hover:bg-red-600 active:bg-red-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3 mt-10 mb-10 " >Delete</button>
             </div>
             
 

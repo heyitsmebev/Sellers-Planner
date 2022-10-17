@@ -14,7 +14,7 @@ const Calc = (props) => {
 
   return (
     <div className="App">
-      <button onClick={() => addNum(props.productcost, props.shippingcost, props.packagingcost, props.salesprice)}>
+      <button onClick={() => addNum(props.productcost, props.shippingcost, props.packagingcost, props.salesprice)} class="inline-block bg-gray-500 hover:bg-gray-600 active:bg-gray-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3 mt-10 mb-10 ">
         Result
       </button>
       <p>{value > 0 ? value : ""}</p>

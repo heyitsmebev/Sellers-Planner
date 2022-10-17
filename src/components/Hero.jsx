@@ -9,9 +9,10 @@ export default function Hero({setUser}) {
                 <section class="flex flex-col lg:flex-row justify-between gap-6 sm:gap-10 md:gap-16">
                 {/* content - start */}
                 <div class="xl:w-5/12 flex flex-col justify-center sm:text-center lg:text-left lg:py-12 xl:py-24">
+                
                     <p class="text-indigo-500 md:text-lg xl:text-xl font-semibold mb-4 md:mb-6">Very proud to introduce</p>
             
-                    <h1 class="text-black-800 text-4xl sm:text-5xl md:text-6xl font-bold mb-8 md:mb-12">Sellers new way to Estimates</h1>
+                    <h1 class="text-black-800 text-4xl sm:text-5xl md:text-6xl font-bold mb-8 md:mb-12">Sellers new way to Estimate</h1>
             
                     <p class="lg:w-4/5 text-gray-500 xl:text-lg leading-relaxed mb-8 md:mb-12">This application helps to estimate the profitablity of a product to help you make better decision for your business</p>
             
@@ -24,7 +25,7 @@ export default function Hero({setUser}) {
                 {/* content - end */}
             
                 {/* image - start */}
-                <div class="xl:w-5/12 lg:h-auto overflow-hidden shadow-lg rounded-lg">
+                <div class="xl:w-5/12 lg:h-auto overflow-hidden shadow-lg rounded-lg lg:py-12 xl:py-24">
                 <AuthPage setUser={setUser}/>
                 </div>
                 {/* image - end */}
