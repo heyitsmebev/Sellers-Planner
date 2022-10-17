@@ -1,5 +1,5 @@
 
-# Mood Journal!
+# Estimator!
 
 ![cover](/public/images/cover.png)
 

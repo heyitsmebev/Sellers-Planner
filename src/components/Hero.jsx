@@ -24,7 +24,7 @@ export default function Hero({setUser}) {
                 {/* content - end */}
             
                 {/* image - start */}
-                <div class="xl:w-5/12 h-48 lg:h-auto overflow-hidden shadow-lg rounded-lg">
+                <div class="xl:w-5/12 lg:h-auto overflow-hidden shadow-lg rounded-lg">
                 <AuthPage setUser={setUser}/>
                 </div>
                 {/* image - end */}
