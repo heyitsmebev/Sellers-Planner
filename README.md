@@ -1,7 +1,9 @@
 
 # Estimator!
 
-![cover](/public/images/cover.png)
+![cover](/public/homescreen.png)
+![cover](/public/screenshot.png)
+
 
 ## 📖 Table of Contents
  1. ➤ [About The Project](#about-the-project)  
@@ -14,13 +16,13 @@
  8. ➤ [Wireframe](#wireframe)
 
 ## About The Project
-This project was designed with mobile-first in mind. I wanted to create an application that can help improve people's mood by tracking their daily thoughts. 
+This application helps to estimate the profitablity of a product to help you make better decision for your business.
 
 ## Overview
-In this project, the user will create a journal entry by submitting a form with their daily thoughts and affirmations. 
+This application helps to estimate the profitablity of a product to help you make better decision for your business
 
 ## The Objective
-A user will get to track their daily journals with the mission that this could help improve a user's mood.
+A user will get to track their product profitablity with the mission that this could help improve a sellers success.
 
 ## Technologies Used
 ![javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
@@ -33,17 +35,16 @@ A user will get to track their daily journals with the mission that this could h
 ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
 
 ## Website
-https://feel-good-journal.herokuapp.com/
+https://sellers-planner.herokuapp.com/
 
 ## Next Steps
--   Add more fields within the journal entry
--   Create the homepage more customize to the user
+-   Add more fields to organize data such as budget and sales
 
 ## Credits
 Beverly Nguyen
 
 ## Wireframe
-https://www.figma.com/file/Y10fjbYlvUsBUue5ZRklGO/Wireframing-(Feel-Good-Project)?node-id=0%3A1
-![wireframe](/public/images/wireframe.png)
+https://whimsical.com/seller-planner-PoHUTWjaY8qvZttFpyXPj
+![wireframe](/public/wireframemockup.png)
 
 
