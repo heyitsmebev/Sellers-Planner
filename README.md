@@ -7,19 +7,15 @@
 
 ## 📖 Table of Contents
  1. ➤ [About The Project](#about-the-project)  
- 2. ➤ [Overview](#overview)
- 3. ➤ [The Objective](#the-objective) 
- 4. ➤ [Technologies Used](#technologies-used) 
- 5. ➤ [Getting Started](#website) 
- 6. ➤ [Next Steps](#next-steps) 
- 7. ➤ [Credits](#credits)
- 8. ➤ [Wireframe](#wireframe)
+ 2. ➤ [The Objective](#the-objective) 
+ 3. ➤ [Technologies Used](#technologies-used) 
+ 4. ➤ [Getting Started](#website) 
+ 5. ➤ [Next Steps](#next-steps) 
+ 6. ➤ [Credits](#credits)
+ 7. ➤ [Wireframe](#wireframe)
 
 ## About The Project
 This application helps to estimate the profitablity of a product to help you make better decision for your business.
-
-## Overview
-This application helps to estimate the profitablity of a product to help you make better decision for your business
 
 ## The Objective
 A user will get to track their product profitablity with the mission that this could help improve a sellers success.
