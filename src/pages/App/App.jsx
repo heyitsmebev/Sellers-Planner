@@ -38,7 +38,7 @@ function App() {
     < main className="App" >
       {user ?
         <>
-          <NavBar user={user} setUser={setUser}/>
+          <Header user={user} setUser={setUser}/>
           <Routes>
             <Route path="/" element={<DashboardPage user={user}  estimateData={estimateData} setUser={setUser}/>} />
             <Route path="/estimates" element={<ShowAllEstimatePage user={user} estimateData={estimateData} />} />

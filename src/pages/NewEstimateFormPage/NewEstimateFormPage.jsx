@@ -42,13 +42,19 @@
 // }
 import { createEstimates } from '../../utilities/estimates-api';
 import { Component } from "react";
+import Footer from '../../components/Footer';
+import Calc from "../../components/Calc";
 
 export default class EstimateForm extends Component {
   state = {
+    name: '',
+    productcost: '',
     shippingcost: '',
     packagingcost: '',
+    salesprice: '',
+    netprofit: '',
     category: '',
-    error: ''
+    error: '',
   };
 
   handleChange = (evt) => {
@@ -56,7 +62,9 @@ export default class EstimateForm extends Component {
       [evt.target.name]: evt.target.value,
       error: ''
     });
+
   };
+
 
   handleSubmit = async (evt) => {
     evt.preventDefault();
@@ -80,7 +88,7 @@ export default class EstimateForm extends Component {
     } catch {
       // An error happened on the server
 
-      this.setState({ error: 'Sign Up Failed - Try Again' });
+      this.setState({  });
     }
   };
 
@@ -90,80 +98,54 @@ export default class EstimateForm extends Component {
   render() {
     return (
       <div>
-      <div class="bg-white py-6 sm:py-8 lg:py-12">
-  <div class="max-w-screen-2xl px-4 md:px-8 mx-auto">
-    {/* text - start */}
-    <div class="mb-10 md:mb-16">
-      <h2 class="text-gray-800 text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-6">Get in touch</h2>
+      <div class="max-w-screen-2xl px-4 md:px-8 mx-auto">
+      {/* text - start */}
+        <div class="mb-10 md:mb-16">
+          <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+          <span class="block xl:inline">Estimator</span>
+          <span class="hidden xl:inline-block">&nbsp;</span>
+          <span class="block text-indigo-600 xl:inline">Calculator</span>
+          </h1>
+          <p class="max-w-screen-md text-gray-500 md:text-lg text-center mx-auto">Enter the numbers before to calcuate the profitability of a product</p>
+        </div>
+      {/* text - end */}
 
-      <p class="max-w-screen-md text-gray-500 md:text-lg text-center mx-auto">This is a section of some simple filler text, also known as placeholder text. It shares some characteristics of a real written text but is random or otherwise generated.</p>
-    </div>
-    {/* text - end */}
-
-    {/* form - start */}
-    <form class="max-w-screen-md grid sm:grid-cols-2 gap-4 mx-auto">
-      <div>
-        <label for="first-name" class="inline-block text-gray-800 text-sm sm:text-base mb-2">First name*</label>
-        <input name="first-name" class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
       </div>
-
-      <div>
-        <label for="last-name" class="inline-block text-gray-800 text-sm sm:text-base mb-2">Last name*</label>
-        <input name="last-name" class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
-      </div>
-
-      <div class="sm:col-span-2">
-        <label for="company" class="inline-block text-gray-800 text-sm sm:text-base mb-2">Company</label>
-        <input name="company" class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
-      </div>
-
-      <div class="sm:col-span-2">
-        <label for="email" class="inline-block text-gray-800 text-sm sm:text-base mb-2">Email*</label>
-        <input name="email" class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
-      </div>
-
-      <div class="sm:col-span-2">
-        <label for="subject" class="inline-block text-gray-800 text-sm sm:text-base mb-2">Subject*</label>
-        <input name="subject" class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
-      </div>
-
-      <div class="sm:col-span-2">
-        <label for="message" class="inline-block text-gray-800 text-sm sm:text-base mb-2">Message*</label>
-        <textarea name="message" class="w-full h-64 bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"></textarea>
-      </div>
-
-      <div class="sm:col-span-2 flex justify-between items-center">
-        <button class="inline-block bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">Send</button>
-
-        <span class="text-gray-500 text-sm">*Required</span>
-      </div>
-
-      <p class="text-gray-400 text-xs">By signing up to our newsletter you agree to our <a href="#" class="hover:text-indigo-500 active:text-indigo-600 underline transition duration-100">Privacy Policy</a>.</p>
-    </form>
-    {/* form - end */}
-  </div>
-</div>
       {/* */}
-        <h1>this is the new page</h1>
         <div className="form-container">
-          <form autoComplete="off" onSubmit={this.handleSubmit}>
-            <label>shippingcost</label>
-            <input type="text" name="shippingcost" value={this.state.shippingcost} onChange={this.handleChange} required />
-            <label>packagingcost</label>
-            <input type="text" name="packagingcost" value={this.state.packagingcost} onChange={this.handleChange} required />
-            <label for="category">Choose a category:</label>
-              <select id="category" name="category" value={this.state.category} onChange={this.handleChange} required >
+          <form autoComplete="off" onSubmit={this.handleSubmit} class="max-w-screen-md grid sm:grid-cols-2 gap-4 mx-auto">
+            <label class="inline-block text-gray-800 text-sm sm:text-base mb-2">Name</label>
+            <input type="text" name="name" value={this.state.name} onChange={this.handleChange} required  class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"/>
+            <label class="inline-block text-gray-800 text-sm sm:text-base mb-2">Product Cost</label>
+            <input type="text" name="productcost" value={this.state.productcost} onChange={this.handleChange} required  class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"/>
+            <label class="inline-block text-gray-800 text-sm sm:text-base mb-2">Shipping Cost</label>
+            <input type="text" name="shippingcost" value={this.state.shippingcost} onChange={this.handleChange} required  class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"/>
+            <label class="inline-block text-gray-800 text-sm sm:text-base mb-2">Packaging Cost</label>
+            <input type="text" name="packagingcost" value={this.state.packagingcost} onChange={this.handleChange} required  class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"/>
+            <label class="inline-block text-gray-800 text-sm sm:text-base mb-2">Sales Price</label>
+            <input type="text" name="salesprice" value={this.state.salesprice} onChange={this.handleChange} required  class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"/>
+             <label for="category" class="inline-block text-gray-800 text-sm sm:text-base mb-2">Choose a category:</label>
+              <select id="category" name="category" value={this.state.category} onChange={this.handleChange} required class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" >
                 <option value="kitchen">kitchen</option>
                 <option value="books">books</option>
-                <option value="home and garden">home & garden</option>
+                <option value="homeandgarden">home & garden</option>
                 <option value="collectibles">collectibles</option>
                 <option value="office products">office products</option>
-                </select>
-            <button type="submit">Save</button>
-          </form>
+              </select>
+            <label class="inline-block text-gray-800 text-sm sm:text-base mb-2">Net Profit</label>
+            <input type="text" name="netprofit" value={this.state.netprofit} onChange={this.handleChange} required class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+            <label class="inline-block text-gray-800 text-sm sm:text-base mb-2"></label>
+            <button class="inline-block bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">Save</button>
+   
+            </form>
+            <Calc packagingcost={this.state.packagingcost} productcost={this.state.productcost} shippingcost={this.state.shippingcost} salesprice={this.state.salesprice} value1={this.state.netprofit} onChange1={this.handleChange}  />
+
         </div>
-        <p className="error-message">&nbsp;{this.state.error}</p>
-      </div>
+        <p className="error-message">&nbsp;{this.state.error}</p>  
+        <Footer />
+    </div>
     );
   }
 }
+
+

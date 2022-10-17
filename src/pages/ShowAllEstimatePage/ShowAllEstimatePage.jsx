@@ -1,6 +1,7 @@
 import * as estimatesAPI from "../../utilities/estimates-api";
 import { Link } from 'react-router-dom';
 import Footer from "../../components/Footer";
+import New from "../../components/New";
 export default function ShowAllEstimates({ user, estimateData }) {
 
   //function to get one estimate by id and pass to pages/components
@@ -10,6 +11,8 @@ export default function ShowAllEstimates({ user, estimateData }) {
   
   return (
     <main>
+    <New />
+
       <h1 className=''>This is the Show All Estimates Page</h1>
       {estimateData.map(function(estimate, index) {
         return (
