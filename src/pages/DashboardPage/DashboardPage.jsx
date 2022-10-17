@@ -41,10 +41,14 @@ import DashboardCard02 from '../../partials/dashboard/DashboardCard02';
 import DashboardCard03 from '../../partials/dashboard/DashboardCard03';
 import DashboardCard06 from '../../partials/dashboard/DashboardCard06';
 import DashboardCard07 from '../../partials/dashboard/DashboardCard07';
+import DashboardCard08 from '../../partials/dashboard/DashboardCard08';
+import DashboardCard09 from '../../partials/dashboard/DashboardCard09';
 import Footer from '../../components/Footer';
+import Header from '../../components/Header';
 
 function Dashboard({user, estimateData, setUser}) {
 
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div className="flex overflow-hidden">
@@ -63,11 +67,11 @@ function Dashboard({user, estimateData, setUser}) {
             {/* Cards */}
             <div className="grid grid-cols-12 gap-6">
 
-              {/* Line chart ( Plus) */}
+              {/* Line chart (Acme Plus) */}
               <DashboardCard01 />
-              {/* Line chart ( Advanced) */}
+              {/* Line chart (Acme Advanced) */}
               <DashboardCard02 />
-              {/* Line chart ( Professional) */}
+              {/* Line chart (Acme Professional) */}
               <DashboardCard03 />
               {/* Doughnut chart (Top Countries) */}
               <DashboardCard06 />
